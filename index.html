@@ -9,25 +9,33 @@
 </head>
 <body>
 
-<h1>Posture Monitoring System</h1>
-<p style="color: gray;">Software Simulation (No Hardware)</p>
+<div class="container">
 
-<div class="card">
-  <h2>Status: <span id="status">---</span></h2>
-  <p>Posture Angle: <span id="angle">---</span>°</p>
-  <p>Wrong Posture Duration: <span id="duration">0</span> sec</p>
+  <h1>Posture Monitoring System</h1>
+  <p class="subtitle">Smart Posture Awareness (Software Simulation)</p>
+
+  <h2 id="welcome">Welcome 👋</h2>
+
+  <div class="card">
+    <h2>Status: <span id="status">---</span></h2>
+    <p>Posture Angle: <span id="angle">---</span>°</p>
+    <p>Wrong Posture Duration: <span id="duration">0</span> sec</p>
+  </div>
+
+  <div class="buttons">
+    <button onclick="simulatePosture()">Simulate Next Reading</button>
+    <button class="clear" onclick="clearHistory()">Clear History</button>
+  </div>
+
+  <h2>Posture Improvement Graph</h2>
+  <canvas id="chart"></canvas>
+
 </div>
-
-<button onclick="simulatePosture()">Simulate Next Reading</button>
-
-<h2>Posture Improvement Graph</h2>
-<canvas id="chart"></canvas>
 
 <script src="script.js"></script>
 </body>
 </html>
-<button onclick="clearHistory()" style="margin-left:10px;">
-  Clear History
-</button>
+
+
 
 
