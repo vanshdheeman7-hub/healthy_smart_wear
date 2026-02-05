@@ -1,4 +1,4 @@
-/* ---------- USER NAME ---------- */
+/* ---------- USER NAME (OPTION 2) ---------- */
 let userName = localStorage.getItem("userName");
 
 if (!userName) {
@@ -9,6 +9,11 @@ if (!userName) {
 
 document.getElementById("welcome").innerText =
   "Welcome, " + userName + " 👋";
+
+function changeUser() {
+  localStorage.removeItem("userName");
+  location.reload();
+}
 
 /* ---------- HISTORY ---------- */
 let badStartTime = null;
@@ -34,7 +39,6 @@ function startBeep() {
 
   oscillator.connect(gainNode);
   gainNode.connect(audioCtx.destination);
-
   oscillator.start();
 }
 
@@ -83,8 +87,7 @@ function simulatePosture() {
     durationEl.innerText = duration;
 
     startBeep();
-  } 
-  else {
+  } else {
     statusEl.innerText = "GOOD POSTURE";
     statusEl.className = "good";
 
