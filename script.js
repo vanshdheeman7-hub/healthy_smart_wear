@@ -1,7 +1,28 @@
 let badStartTime = null;
 let history = JSON.parse(localStorage.getItem("postureHistory")) || [];
 
-// Setup chart
+// ---------- BEEP SOUND SETUP ----------
+let audioCtx = null;
+function playBeep() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  const oscillator = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.setValueAtTime(800, audioCtx.currentTime); // Beep tone
+  gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+
+  oscillator.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  oscillator.start();
+  oscillator.stop(audioCtx.currentTime + 0.3); // 300 ms beep
+}
+
+// ---------- GRAPH ----------
 const ctx = document.getElementById("chart").getContext("2d");
 const chart = new Chart(ctx, {
   type: "line",
@@ -16,9 +37,9 @@ const chart = new Chart(ctx, {
   }
 });
 
+// ---------- SIMULATION ----------
 function simulatePosture() {
-  // Simulated posture angle
-  const angle = Math.floor(Math.random() * 60);
+  const angle = Math.floor(Math.random() * 60); // simulated angle
   const threshold = 30;
 
   document.getElementById("angle").innerText = angle;
@@ -37,8 +58,9 @@ function simulatePosture() {
     const duration = Math.floor((Date.now() - badStartTime) / 1000);
     durationEl.innerText = duration;
 
-    alert("⚠️ Wrong Posture Detected! Please sit straight.");
-  } else {
+    playBeep(); // 🔊 BEEP SOUND
+  } 
+  else {
     statusEl.innerText = "GOOD POSTURE";
     statusEl.className = "good";
 
