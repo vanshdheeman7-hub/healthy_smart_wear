@@ -51,7 +51,7 @@ function stopBeep() {
 }
 
 /* ---------- GRAPH ---------- */
-const ctx = document.getElementById("chart").getContext("2d");
+/*const ctx = document.getElementById("chart").getContext("2d");
 const chart = new Chart(ctx, {
   type: "line",
   data: {
@@ -64,6 +64,42 @@ const chart = new Chart(ctx, {
     }]
   }
 });
+*/
+const ctx = document.getElementById("chart").getContext("2d");
+
+const chart = new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: history.map((_, i) => "Attempt " + (i + 1)),
+    datasets: [{
+      label: "Wrong Posture Duration (seconds)",
+      data: history,
+      borderColor: "red",
+      fill: false,
+      tension: 0.3
+    }]
+  },
+  options: {
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Posture Attempt Number"
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Wrong Posture Duration (seconds)"
+        },
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+
+
 
 /* ---------- SIMULATION ---------- */
 function simulatePosture() {
@@ -129,3 +165,4 @@ function clearHistory() {
 
   alert("History cleared successfully!");
 }
+
