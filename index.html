@@ -1,29 +1,15 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Posture Monitoring System (Software Simulation)</title>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <title>Posture Simulation Test</title>
 </head>
 <body>
 
-<h1>Posture Monitoring System</h1>
-<p style="color:gray;">Software Simulation (No Hardware)</p>
+<h1>Posture Simulation</h1>
 
-<div class="card">
-  <h2>Status: <span id="status">---</span></h2>
-  <p>Posture Angle: <span id="angle">---</span>°</p>
-  <p>Wrong Posture Duration: <span id="duration">0</span> sec</p>
-</div>
+<p>Status: <span id="status">---</span></p>
 
-<!-- 🔥 THIS IS THE IMPORTANT BUTTON -->
 <button onclick="simulatePosture()">Simulate Next Reading</button>
-
-<h2>Posture Improvement Graph</h2>
-<canvas id="chart"></canvas>
 
 <script src="script.js"></script>
 </body>
