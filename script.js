@@ -92,3 +92,27 @@ function simulatePosture() {
     durationEl.innerText = 0;
   }
 }
+function clearHistory() {
+  // Stop beep if running
+  stopBeep();
+
+  // Clear stored history
+  history = [];
+  localStorage.removeItem("postureHistory");
+
+  // Reset chart
+  chart.data.labels = [];
+  chart.data.datasets[0].data = [];
+  chart.update();
+
+  // Reset UI
+  document.getElementById("status").innerText = "---";
+  document.getElementById("status").className = "";
+  document.getElementById("angle").innerText = "---";
+  document.getElementById("duration").innerText = "0";
+
+  badStartTime = null;
+
+  alert("History cleared successfully!");
+}
+
