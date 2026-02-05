@@ -1,21 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Posture-Correcting Smart Shirt</title>
+  <title>Posture Monitoring System (Software Simulation)</title>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Posture-Correcting Smart Shirt</h1>
+<h1>Posture Monitoring System</h1>
+<p style="color:gray;">Software Simulation (No Hardware)</p>
 
 <div class="card">
   <h2>Status: <span id="status">---</span></h2>
-  <p>Flex Value: <span id="flex">---</span></p>
+  <p>Posture Angle: <span id="angle">---</span>°</p>
   <p>Wrong Posture Duration: <span id="duration">0</span> sec</p>
 </div>
+
+<!-- 🔥 THIS IS THE IMPORTANT BUTTON -->
+<button onclick="simulatePosture()">Simulate Next Reading</button>
 
 <h2>Posture Improvement Graph</h2>
 <canvas id="chart"></canvas>
@@ -23,3 +28,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
